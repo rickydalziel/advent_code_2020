@@ -13,7 +13,7 @@ def two_values_product(values)
     second_values = values[index1, values_size - 2]
     second_values.each do |v2|
       set = [v1, v2]
-      puts set.inject(:*) if set.sum == 2020
+      return set.inject(:*) if set.sum == 2020
     end
   end
 end
@@ -29,12 +29,16 @@ def three_values_product(values)
       third_values = second_values[index2, values_size - 1]
       third_values.each do |v3|
         set = [v1, v2, v3]
-        puts set.inject(:*) if set.sum == 2020
+        return set.inject(:*) if set.sum == 2020
       end
     end
   end
 end
 
+n = 10
+
 values = read_values
-two_values_product(values)
-three_values_product(values)
+Benchmark.bm do |x|
+  x.report('two values') { n.times { puts two_values_product(values) } }
+  x.report('three values') { n.times { puts three_values_product(values) } }
+end
