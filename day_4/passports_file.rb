@@ -1,5 +1,4 @@
 class PassportsFile
-
   def initialize(filename)
     @filename = filename
   end
