@@ -20,13 +20,12 @@ class Passport
   end
 
   def valid_basic?
-    return false unless (REQUIRED_FIELDS.keys - passport_fields.keys).empty?
-
-    true
+    (REQUIRED_FIELDS.keys - passport_fields.keys).empty?
   end
 
   def valid_advanced?
     return false unless valid_basic?
+
     REQUIRED_FIELDS.map do |key, type|
       type.valid?(passport_fields[key])
     end.all?
