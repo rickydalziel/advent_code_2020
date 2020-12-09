@@ -1,5 +1,4 @@
 require_relative 'rules'
-require 'pry'
 
 rules = Rules.new('input').to_h
 
